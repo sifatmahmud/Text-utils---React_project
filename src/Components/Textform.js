@@ -12,6 +12,19 @@ export default function Textform(props) {
     setText(newText);
   };
 
+  const handleCapitalClick = () => {
+    let newText1 = text.toLowerCase();
+    const result = newText1.replace(/(?<=(?:^|[.?!])\W*)[a-z]/g, i => i.toUpperCase());
+    setText(result);
+  };
+
+  const handleClearClick = () => {
+    let newText = "";
+    setText(newText);
+  };
+
+
+
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -26,8 +39,10 @@ export default function Textform(props) {
           <textarea className="form-control" id="exampleFormControlTextarea1" rows="10" value={text} onChange={handleOnChange}>
           </textarea>
         </div>
+        <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
         <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary" onClick={handleLoClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary" onClick={handleCapitalClick}>Captalize first letter</button>
       </div>
 
       <div className="container">
